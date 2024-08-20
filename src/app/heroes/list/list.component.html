@@ -1,0 +1,28 @@
+<h3>Heroes List</h3>
+
+<ul class="mt-2 list-group">
+  <li class="list-group-item">Orlok</li>
+  <li class="list-group-item">Dr Doom</li>
+  <li class="list-group-item">Alucard</li>
+  <li class="list-group-item">Mefisto</li>
+</ul>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroName"
+    class="list-group-item">
+    {{name}}
+  </li>
+</ul>
+
+<div *ngIf="deleted; else noDeleted">
+  <h3>Erased: <small class="text-danger"> {{deleted}} </small></h3>
+</div>
+<ng-template #noDeleted>
+  <h3>No Deleted</h3>
+</ng-template>
+
+<button *ngIf="heroName.length > 0"
+  (click)="deleteHero()"
+  class="btn btn-outline-danger">
+  Delete
+</button>
